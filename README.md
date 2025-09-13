@@ -5,16 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Message for you</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .no-btn {
+      position: relative;
+      transition: all 0.4s ease;
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
-    <h2 class="question">Do You like me?</h2>
+    <h2 class="question">You like me?</h2>
     <img class="gif" alt="gif" src="https://raw.githubusercontent.com/DzarelDeveloper/Img/main/gifyou.webp">
     <div class="btn-group">
       <button class="yes-btn">Yes</button>
       <button class="no-btn">No</button>
     </div>
   </div>
-  <script src="script.js"></script>
+  
+  <script>
+    const noBtn = document.querySelector('.no-btn');
+    let clickCount = 0;
+
+    noBtn.addEventListener('click', () => {
+      clickCount++;
+      noBtn.style.transform = `translateX(${clickCount * 60}px)`; // moves further right each click
+      noBtn.style.opacity = 1 - (clickCount * 0.2); // fade gradually
+
+      if (clickCount >= 5) {
+        noBtn.style.display = 'none'; // hide completely
+      }
+    });
+  </script>
 </body>
 </html>
